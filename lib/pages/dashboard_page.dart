@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-class DashboardPage extends StatelessWidget {
+class DashboardPage extends GetView {
   const DashboardPage({super.key});
 
   @override
@@ -50,14 +52,27 @@ class DashboardPage extends StatelessWidget {
                   crossAxisSpacing: 16,
                   mainAxisSpacing: 16,
                   children: [
-                    bottomIcon(Icons.person, "Profile"),
-                    bottomIcon(Icons.school, "Courses"),
-                    bottomIcon(Icons.payment, "Payments"),
-                    bottomIcon(Icons.settings, "Settings"),
-                    bottomIcon(Icons.email, "Email"),
-                    bottomIcon(Icons.report, "Report"),
-                    bottomIcon(Icons.event, "Events"),
-                    bottomIcon(Icons.more_horiz, "More"),
+                    bottomIcon(LucideIcons.user, "Student", () {
+                      Navigator.pushNamed(context, '/student');
+                    }),
+                    bottomIcon(LucideIcons.school, "Staff", () {
+                      Navigator.pushNamed(context, '/staff');
+                    }),
+                    bottomIcon(LucideIcons.calendar, "Attendance", () {
+                      Navigator.pushNamed(context, '/attendance');
+                    }),
+                    // bottomIcon(LucideIcons.settings, "Settings", () {
+                    //   Navigator.pushNamed(context, '/settings');
+                    // }),
+                    // bottomIcon(LucideIcons.mail, "Email", () {
+                    //   Navigator.pushNamed(context, '/email');
+                    // }),
+                    // bottomIcon(LucideIcons.octagonAlert, "Report", () {
+                    //   Navigator.pushNamed(context, '/report');
+                    // }),
+                    bottomIcon(LucideIcons.fileInput, "Admission", () {
+                      Navigator.pushNamed(context, '/studentadmission');
+                    }),
                   ],
                 ),
               ],
@@ -72,7 +87,7 @@ class DashboardPage extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withAlpha(25),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
@@ -108,14 +123,17 @@ class DashboardPage extends StatelessWidget {
     );
   }
 
-  Widget bottomIcon(IconData icon, String label) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        CircleAvatar(radius: 24, child: Icon(icon, size: 28)),
-        const SizedBox(height: 8),
-        Text(label, style: TextStyle(fontSize: 12)),
-      ],
+  Widget bottomIcon(IconData icon, String label, VoidCallback onTap) {
+    return GestureDetector(
+      onTap: onTap, // Navigate when tapped
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CircleAvatar(radius: 24, child: Icon(icon, size: 28)),
+          const SizedBox(height: 8),
+          Text(label, style: TextStyle(fontSize: 12)),
+        ],
+      ),
     );
   }
 }

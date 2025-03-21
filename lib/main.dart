@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vlerp/auth/login_page.dart';
 import 'package:vlerp/auth/register_page.dart';
-import 'package:vlerp/pages/about_page.dart';
+import 'package:vlerp/pages/attendance_page.dart';
 import 'package:vlerp/pages/dashboard_page.dart';
+import 'package:vlerp/pages/studentadmission_page.dart';
+import 'package:vlerp/themes/light.dart';
 import 'components/app_layout.dart';
-import 'pages/home_page.dart';
-import 'pages/settings_page.dart';
+import 'pages/student_page.dart';
+import 'pages/staff_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,18 +19,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'My First App',
-      theme: ThemeData(primarySwatch: Colors.red),
+      theme: lightTheme,
       initialRoute: '/',
-      routes: {
-        '/login': (context) => const LoginPage(),
-        '/register': (context) => const RegisterPage(),
-        '/': (context) => const AppLayout(child: HomePage()),
-        '/settings': (context) => const AppLayout(child: SettingsPage()),
-        '/about': (context) => const AppLayout(child: AboutPage()),
-        '/dashboard': (context) => const AppLayout(child: DashboardPage()),
-      },
+      getPages: [
+        GetPage(
+          name: "/",
+          page: () => LoginPage(),
+          binding: LoginPageBindings(),
+        ),
+        GetPage(name: "/dashboard", page: () => DashboardPage()),
+      ],
     );
   }
 }

@@ -42,7 +42,7 @@ class RegisterPage extends StatelessWidget {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/dashboard');
+                  Navigator.pushReplacementNamed(context, '/');
                 },
                 child: const Text('Register'),
               ),
