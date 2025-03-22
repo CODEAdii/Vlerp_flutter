@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class StaffPage extends StatelessWidget {
+class StaffPage extends GetView<StaffPageController> {
   const StaffPage({super.key});
 
   @override
@@ -17,5 +18,14 @@ class StaffPage extends StatelessWidget {
       ),
       body: const Center(child: Text('This is the Staff Page')),
     );
+  }
+}
+
+class StaffPageController extends GetxController {}
+
+class StaffPageBinding extends Bindings {
+  @override
+  void dependencies() {
+    Get.put<StaffPageController>(StaffPageController());
   }
 }

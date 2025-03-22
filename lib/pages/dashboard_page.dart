@@ -61,9 +61,9 @@ class DashboardPage extends GetView {
                     bottomIcon(LucideIcons.calendar, "Attendance", () {
                       Navigator.pushNamed(context, '/attendance');
                     }),
-                    // bottomIcon(LucideIcons.settings, "Settings", () {
-                    //   Navigator.pushNamed(context, '/settings');
-                    // }),
+                    bottomIcon(LucideIcons.userRoundPen, "Student P", () {
+                      Navigator.pushNamed(context, '/studentprofile');
+                    }),
                     // bottomIcon(LucideIcons.mail, "Email", () {
                     //   Navigator.pushNamed(context, '/email');
                     // }),
